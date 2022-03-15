@@ -92,6 +92,7 @@ main {
   font-size: 1.6rem;
   line-height: 1;
 }
+
 /* menu paste */
 .main-menu .menu-icon {
   position: fixed;
@@ -99,7 +100,7 @@ main {
   left: 1.5rem;
   width: 60px;
   height: 60px;
-  background-color: blue;
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
 
   display: flex;
@@ -109,7 +110,7 @@ main {
 }
 
 .main-menu svg {
-  stroke: ivory;
+  stroke: var(--space-cadet);
   stroke-width: 4px;
   stroke-linecap: round;
   padding: 12px;
@@ -129,11 +130,11 @@ main {
 }
 
 .menu-show .menu-icon {
-  background-color: magenta;
+  background-color: transparent;
 }
 
 .menu-show svg line {
-  stroke: greenyellow;
+  stroke: var(--floral-white);
   stroke-width: 5px;
 }
 
@@ -146,6 +147,7 @@ main {
 }
 
 /* end menu paste */
+
 .hero {
   margin-bottom: 4rem;
 }
@@ -158,39 +160,42 @@ main {
   bottom: 0;
 
   display: flex;
+  justify-content: center;
 
   background-color: var(--space-cadet);
 
   transform: translateX(-100vw);
-  transition: transform 400ms;
+  /* transition when menu disappears */
+  transition: transform 300ms;
 }
 
 .main-menu.menu-show nav {
   transform: translateX(0);
+  /* transition when menu appears */
+  transition: transform 500ms;
 }
 
-nav ul {
+.main-menu nav ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
   list-style-type: none;
-  margin: 0 auto;
   padding: 0;
-  max-width: 80rem;
+  margin: 0;
 }
 
-nav a {
+.main-menu nav a {
   display: block;
   padding: 1rem;
-  font-size: 1.4rem;
+  font-size: 2rem;
   color: var(--floral-white);
 }
 
-nav a:not([href]) {
+.main-menu nav a:not([href]) {
   color: var(--roman-silver);
 }
 
-nav a[href]:hover {
+.main-menu nav a[href]:hover {
   color: var(--space-cadet-light);
 }
 
@@ -240,26 +245,19 @@ nav a[href]:hover {
     transition: none;
   }
 
-  nav ul {
+  .main-menu nav ul {
     flex-direction: row;
     justify-content: space-between;
-
     margin: 0 auto;
-
     max-width: 80rem;
   }
 
-  nav a {
-    padding: 1rem;
+  .main-menu nav a {
     font-size: 1.4rem;
     color: var(--space-cadet);
   }
 
-  nav a:not([href]) {
-    color: var(--roman-silver);
-  }
-
-  nav a::after {
+  .main-menu nav a::after {
     content: "";
     display: block;
     width: calc(100% + 12px);
@@ -272,11 +270,7 @@ nav a[href]:hover {
     transform-origin: right;
   }
 
-  nav a[href]:hover {
-    color: var(--space-cadet-light);
-  }
-
-  nav a[href]:hover::after {
+  .main-menu nav a[href]:hover::after {
     transform: scale(1);
     transform-origin: left;
   }
